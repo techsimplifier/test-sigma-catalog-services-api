@@ -1,0 +1,2308 @@
+---
+swagger: "2.0"
+info:
+  description: "Catalog Services Web API Documentation"
+  title: "Catalog Services API"
+basePath: "/CS3"
+paths:
+  /api/categories:
+    get:
+      tags:
+      - "Categories"
+      summary: "Returns all the categories in the datastore."
+      operationId: "ApiCategoriesGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/categories({categories})/entities:
+    get:
+      tags:
+      - "Categories"
+      summary: "Returns a list of all entities that reside in the specified categories."
+      operationId: "ApiCategories({categories})EntitiesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "categories"
+        in: "path"
+        description: "categories is a comma-separated list of category IDs."
+        required: true
+        type: "string"
+        x-exportParamName: "Categories"
+      - name: "instanceTypeName"
+        in: "query"
+        description: "InstanceTypeName is the name of the instance types to be returned.\
+          \ For example, Component, Charge."
+        required: false
+        type: "string"
+        x-exportParamName: "InstanceTypeName"
+        x-optionalDataType: "String"
+      - name: "includeChildCategories"
+        in: "query"
+        description: "includeChildCategories indicates whether entities should be\
+          \ returned that live in categories that are children of the category ids\
+          \ specified in the Categories parameter."
+        required: false
+        type: "string"
+        x-exportParamName: "IncludeChildCategories"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/characteristics:
+    get:
+      tags:
+      - "Characteristics"
+      summary: "Returns all the data types configured as characteristics."
+      operationId: "ApiCharacteristicsGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/classifications({classificationtype}):
+    get:
+      tags:
+      - "Classification"
+      summary: "Returns the complete classification structure for a specified classification\
+        \ type."
+      description: "Includes all instances and parent instances of the specified classification\
+        \ type"
+      operationId: "ApiClassifications({classificationtype})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "classificationType"
+        in: "path"
+        description: "classificationType is the type of classification for which you\
+          \ want to retrieve the instance hierarchy."
+        required: true
+        type: "string"
+        x-exportParamName: "ClassificationType"
+      responses:
+        "200":
+          description: "Success"
+  /api/classificationtypes:
+    get:
+      tags:
+      - "Classification"
+      summary: "Returns all the data types configured as classifications."
+      operationId: "ApiClassificationtypesGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/decompose:
+    post:
+      tags:
+      - "Decompose"
+      summary: "Fully validates and articulates an OrderCandidate request"
+      operationId: "ApiOrdercandidateDecomposePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/decompose/commercial:
+    post:
+      tags:
+      - "Decompose"
+      summary: "Fully validates and articulates an OrderCandidate request with respect\
+        \ to the commercial/technical boundary"
+      operationId: "ApiOrdercandidateDecomposeCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/decompose:
+    post:
+      tags:
+      - "Decompose"
+      summary: "Fully validates and articulates an ProductCandidate request"
+      operationId: "ApiProductcandidateDecomposePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/decompose/commercial:
+    post:
+      tags:
+      - "Decompose"
+      summary: "Fully validates and articulates an ProductCandidate request with respect\
+        \ to the commercial/technical boundary"
+      operationId: "ApiProductcandidateDecomposeCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities/Schema:
+    get:
+      tags:
+      - "Entities"
+      summary: "Return the schema currently used by the Entities."
+      operationId: "ApiEntitiesSchemaGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/entities({guid})/parents:
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns a list of all entities that are parents of the supplied entity."
+      description: "The list of parents is filtered based on the parent type parameter.\
+        \ If the query does not specify a type, all the\r\nparent entities are returned\
+        \ regardless of type."
+      operationId: "ApiEntities({guid})ParentsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "guid"
+        in: "path"
+        description: "guid is the GUID of the entity for which the query finds parents."
+        required: true
+        type: "string"
+        x-exportParamName: "Guid"
+      - name: "parentTypes"
+        in: "query"
+        description: "parentTypes is a comma separated list of parent types, for example,\
+          \ Component,Package_Template."
+        required: false
+        type: "string"
+        x-exportParamName: "ParentTypes"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities({instanceTypeName})/Classifications({classifications}):
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns a list of all entities that are of, or derive from, a given\
+        \ type and are classified or not classified by a given set of classification\
+        \ GUIDs."
+      operationId: "ApiEntities({instanceTypeName})Classifications({classifications})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "instanceTypeName"
+        in: "path"
+        description: "instanceTypeName is the name of the type that contains the classification\
+          \ element of interest,\r\n            for example, Package, Component, or\
+          \ Bundle."
+        required: true
+        type: "string"
+        x-exportParamName: "InstanceTypeName"
+      - name: "classifications"
+        in: "path"
+        description: "<main>A comma separated list of classification packets that\
+          \ define the classification on which to match.  You may pass multiple packets\
+          \ and each packet has the following format:</main>\r\n<sub>1. [CLASSIFICATIONELEMENTNAME;\
+          \ CLASSIFICATIONGUIDS; MATCHALLCLASSIFICATION; CANNEVEREXIST]</sub>\r\n\
+          <sub>2. CLASSIFICATIONELEMENTNAME - is the name of the schema element that\
+          \ holds the classifications on which they query is filtering.</sub>\r\n\
+          <sub>3. CLASSIFICATIONGUIDS - is a comma-separated list that represents\
+          \ all the classifications on which the query is filtering.</sub>\r\n<sub>4.\
+          \ MATCHALLCLASSIFICATION - is either TRUE or FALSE to specify whether the\
+          \ query results need to match ALL of these or just ANY.</sub>\r\n<sub>5.\
+          \ CANNEVEREXIST - either true or false to specify whether we want to return\
+          \ entities that lack the Element name (Optional)</sub>"
+        required: true
+        type: "string"
+        x-exportParamName: "Classifications"
+      - name: "operationType"
+        in: "query"
+        description: "operationType is either “classified” or “notClassified” to indicate\
+          \ whether or not to classify\r\n            the entity by the list of classifications."
+        required: false
+        type: "string"
+        x-exportParamName: "OperationType"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities/WithClassificationsAndCharacteristics:
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns a list of all entities that are of a given type or derive\
+        \ from a given type, are classified by a given set of classification Guids\
+        \ and have a given set of characteristics"
+      description: "Multiple characteristic, facts and classification packets can\
+        \ be added by appending each element set inside square brackets []. Each additional\
+        \ packet will be combined with the others using “AND” logic so all must match."
+      operationId: "ApiEntitiesWithClassificationsAndCharacteristicsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "classifications"
+        in: "query"
+        description: "<main>A comma separated list of classification packets that\
+          \ define the classification on which to match.  You may pass multiple packets\
+          \ and each packet has the following format:</main>\r\n<sub>1. [CLASSIFICATIONELEMENTNAME;\
+          \ CLASSIFICATIONGUIDS; MATCHALLCLASSIFICATION; CANNEVEREXIST; NOT]</sub>\r\
+          \n<sub>2. CLASSIFICATIONELEMENTNAME - is the name of the schema element\
+          \ that holds the classifications on which they query is filtering.</sub>\r\
+          \n<sub>3. CLASSIFICATIONGUIDS - is a comma-separated list that represents\
+          \ all the classifications on which the query is filtering.</sub>\r\n<sub>4.\
+          \ MATCHALLCLASSIFICATION - is either TRUE or FALSE to specify whether the\
+          \ query results need to match ALL of these or just ANY.</sub>\r\n<sub>5.\
+          \ CANNEVEREXIST - either true or false to specify whether we want to return\
+          \ entities that lack the Element name (Optional)</sub>\r\n<sub>6. NOT -\
+          \ an optional parameter to allow the filter to be inverted</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "Classifications"
+        x-optionalDataType: "String"
+      - name: "instanceTypeName"
+        in: "query"
+        description: "instanceTypeName is the name of the type that contains the classification\
+          \ element of interest,\r\n            for example, Package, Component, or\
+          \ Bundle."
+        required: false
+        type: "string"
+        x-exportParamName: "InstanceTypeName"
+        x-optionalDataType: "String"
+      - name: "characteristics"
+        in: "query"
+        description: "<main>A comma separated list of characteristics packets that\
+          \ define the characteristics on which to match.  You may pass multiple packets\
+          \ and each packet has the following format:</main>\r\n<sub>1. [CHARACTERISTICELEMENTNAME;\
+          \ CHARACTERISTICGUIDS; MATCHALLCHARACTERISTICS; CANNEVEREXIST; NOT]</sub>\r\
+          \n<sub>2. CHARACTERISTICELEMENTNAME - is the name of the schema element\
+          \ that holds the characteristics on which they query is filtering.</sub>\r\
+          \n<sub>3. CHARACTERISTICNGUIDS - is a comma-separated list that represents\
+          \ all the characteristics on which the query is filtering.</sub>\r\n<sub>4.\
+          \ MATCHALLCHARACTERISTICS - is either TRUE or FALSE to specify whether the\
+          \ query results need to match ALL of these or just ANY.</sub>\r\n<sub>5.\
+          \ CANNEVEREXIST - either true or false to specify whether we want to return\
+          \ entities that lack the Element name (Optional)</sub>\r\n<sub>6. NOT -\
+          \ an optional parameter to allow the filter to be inverted</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "Characteristics"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities({entityId}):
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns entity with the specified business ID or GUID."
+      operationId: "ApiEntities({entityId})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "entityId"
+        in: "path"
+        description: "entityId is the GUID or BusinessId of the entity."
+        required: true
+        type: "string"
+        x-exportParamName: "EntityId"
+      - name: "id"
+        in: "query"
+        description: "idType is either “GUID” or “Business” to indicate the type of\
+          \ ID being passed into the query. Note: The IDType parameter is not required\
+          \ to return data when EntityID is a GUID."
+        required: false
+        type: "string"
+        x-exportParamName: "Id"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities({entityType})/factelementfilter({elementFilterList}):
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns entities that use given fact values according to the filter."
+      operationId: "ApiEntities({entityType})Factelementfilter({elementFilterList})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "entityType"
+        in: "path"
+        description: "Entity Type is a list the entity types to look for comma separated\
+          \ e.g. Component, Charge."
+        required: true
+        type: "string"
+        x-exportParamName: "EntityType"
+      - name: "elementFilterList"
+        in: "path"
+        description: "<main>A list of 'fact value' packets which define what fact-values\
+          \ you want to match on.  You can pass multiple packets into this query.\
+          \ Each packet is in the following:</main>\r\n<sub>1. [FACTVALUE; FACTVALUEGUIDS;\
+          \ MATCHALLFACTVALUES; CANNEVEREXIST; NOT]</sub>\r\n<sub>2. FACTVALUE - The\
+          \ schema element name that contains the fact values to filter on.</sub>\r\
+          \n<sub>3. FACTVALUEGUIDS - is a comma seperated list that represents all\
+          \ the fact values on which the query is filtering.</sub>\r\n<sub>4. MATCHALLFACTVALUES\
+          \ - is either TRUE or FALSE to specify whether the query results need to\
+          \ match ALL of these or just ANY.</sub>\r\n<sub>5. CANNEVEREXIST - either\
+          \ true or false to specify whether we want to return entities that lack\
+          \ the Element name (Optional)</sub>\r\n<sub>6. NOT - an optional parameter\
+          \ to allow the filter to be inverted</sub>"
+        required: true
+        type: "string"
+        x-exportParamName: "ElementFilterList"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities/With:
+    get:
+      tags:
+      - "Entities"
+      summary: "Returns a list of all entities that: are of, or derive from, a given\
+        \ type \r\nand that are classified by a given set of classification Guids\
+        \  and/or have a given set of characteristics and/or have given fact values."
+      description: "Each of the parameters on the query is optional with the exception\
+        \ of the InstanceTypeName so this query can be used to search for any and\
+        \ all types of entity restricting it by any of the properties available.\r\
+        \nMultiple characteristic, facts and classification packets can be added by\
+        \ appending each element set inside square brackets []. Each additional packet\
+        \ will be combined with the others using “AND” logic so all must match."
+      operationId: "ApiEntitiesWithGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "classifications"
+        in: "query"
+        description: "<main>A comma separated list of classification packets that\
+          \ define the classification on which to match.  You may pass multiple packets\
+          \ and each packet has the following format:</main>\r\n<sub>1. [CLASSIFICATIONELEMENTNAME;\
+          \ CLASSIFICATIONGUIDS; MATCHALLCLASSIFICATION; CANNEVEREXIST; NOT]</sub>\r\
+          \n<sub>2. CLASSIFICATIONELEMENTNAME - is the name of the schema element\
+          \ that holds the classifications on which they query is filtering.</sub>\r\
+          \n<sub>3. CLASSIFICATIONGUIDS - is a comma-separated list that represents\
+          \ all the classifications on which the query is filtering.</sub>\r\n<sub>4.\
+          \ MATCHALLCLASSIFICATION - is either TRUE or FALSE to specify whether the\
+          \ query results need to match ALL of these or just ANY.</sub>\r\n<sub>5.\
+          \ CANNEVEREXIST - either true or false to specify whether we want to return\
+          \ entities that lack the Element name (Optional)</sub>\r\n<sub>6. NOT -\
+          \ an optional parameter to allow the filter to be inverted</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "Classifications"
+        x-optionalDataType: "String"
+      - name: "instanceTypeName"
+        in: "query"
+        description: "instanceTypeName is the name of the type that contains the classification\
+          \ element of interest, for example, Package, Component, or Bundle."
+        required: false
+        type: "string"
+        x-exportParamName: "InstanceTypeName"
+        x-optionalDataType: "String"
+      - name: "characteristics"
+        in: "query"
+        description: "<main>A comma separated list of characteristics packets that\
+          \ define the characteristics on which to match.  You may pass multiple packets\
+          \ and each packet has the following format:</main>\r\n<sub>1. [CHARACTERISTICELEMENTNAME;\
+          \ CHARACTERISTICGUIDS; MATCHALLCHARACTERISTICS; CANNEVEREXIST; NOT]</sub>\r\
+          \n<sub>2. CHARACTERISTICELEMENTNAME - is the name of the schema element\
+          \ that holds the characteristics on which they query is filtering.</sub>\r\
+          \n<sub>3. CHARACTERISTICNGUIDS - is a comma-separated list that represents\
+          \ all the characteristics on which the query is filtering.</sub>\r\n<sub>4.\
+          \ MATCHALLCHARACTERISTICS - is either TRUE or FALSE to specify whether the\
+          \ query results need to match ALL of these or just ANY.</sub>\r\n<sub>5.\
+          \ CANNEVEREXIST - either true or false to specify whether we want to return\
+          \ entities that lack the Element name (Optional)</sub>\r\n<sub>6. NOT -\
+          \ an optional parameter to allow the filter to be inverted</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "Characteristics"
+        x-optionalDataType: "String"
+      - name: "factElementFilter"
+        in: "query"
+        description: "<main>A list of 'fact value' packets which define what fact-values\
+          \ you want to match on.  You may pass multiple packets and each packet has\
+          \ the following format:</main>\r\n<sub>1. [FACTVALUE; FACTVALUEGUIDS; MATCHALLFACTVALUES;\
+          \ CANNEVEREXIST; NOT]</sub>\r\n<sub>2. FACTVALUE - The schema element name\
+          \ that contains the fact values to filter on.</sub>\r\n<sub>3. FACTVALUEGUIDS\
+          \ - is a comma seperated list that represents all the fact values on which\
+          \ the query is filtering.</sub>\r\n<sub>4. MATCHALLFACTVALUES - is either\
+          \ TRUE or FALSE to specify whether the query results need to match ALL of\
+          \ these or just ANY.</sub>\r\n<sub>5. CANNEVEREXIST - either true or false\
+          \ to specify whether we want to return entities that lack the Element name\
+          \ (Optional)</sub>\r\n<sub>6. NOT - an optional parameter to allow the filter\
+          \ to be inverted</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "FactElementFilter"
+        x-optionalDataType: "String"
+      - name: "categories"
+        in: "query"
+        description: "<main>A list of 'categories value' packets which define what\
+          \ categories you want to match on.  You may pass multiple packets and each\
+          \ packet has the following format:</main>\r\n<sub>1. [Category Ids; IncludeChildCategories]</sub>\r\
+          \n<sub>2. Category Ids - the comma separated list of category ids.</sub>\r\
+          \n<sub>3. IncludeChildCategories - boolean value indicating if filter apply\
+          \ on child categories as well</sub>"
+        required: false
+        type: "string"
+        x-exportParamName: "Categories"
+        x-optionalDataType: "String"
+      - name: "availableDate"
+        in: "query"
+        description: "Target date. If supplied, only entities available on this date\
+          \ are returned. Otherwise results are not date filtered"
+        required: false
+        type: "string"
+        x-exportParamName: "AvailableDate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities({inputGuid})/productcandidate:
+    get:
+      tags:
+      - "Entities"
+      summary: "In order to assist with creation of Product Candidate structures CPQ\
+        \ provides a resource that will return, for any entity, a product candidate\
+        \ focused structure."
+      description: "Inside the response structure there will be a single instance\
+        \ for every child entity that exists within the product specification. This\
+        \ is irrespective of the cardinality on the relations involved. \r\nThis means\
+        \ that the structure will in most cases not be valid for the validation service.\
+        \ The data though is in the correct format to be worked with to construct\
+        \ the input by duplicating or removing entries from the XML.\r\n<para>\r\n\
+        Within each child entity all of the configurable data items (those that inherit\
+        \ from TConfigurable_Fact and TSpecCharUse) will also be included as CharacteristicUse\
+        \ items. Again all values will be shown which will make the structure invalid\
+        \ in most cases.\r\n</para><para>\r\nAlso in order to assist with the understanding\
+        \ of the produced structure there are a number of attributes that are added\
+        \ to the output that are not part of the Product Candidate xsd structure.\
+        \ These elements are all marked with the attribute ‘Remove = “true”’\r\nto\
+        \ allow them to be easily taken out of the structure. These attributes provide\
+        \ the name and typing of the entities involved and also provide the cardinalities\
+        \ of the relations and configurable items alongside the dates for any relations.\r\
+        \n</para>"
+      operationId: "ApiEntities({inputGuid})ProductcandidateGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "inputGuid"
+        in: "path"
+        description: "inputGuid is the GUID of the product specification that a candidate\
+          \ is required for."
+        required: true
+        type: "string"
+        x-exportParamName: "InputGuid"
+      responses:
+        "200":
+          description: "Success"
+  /api/entities/EntityInContext:
+    post:
+      tags:
+      - "Entities"
+      summary: "Returns an entity in context of a product specification based on a\
+        \ guid path or business path"
+      operationId: "ApiEntitiesEntityInContextPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "parameters"
+        description: "parameters are the GUID or BUID path of a entity within a product\
+          \ specification."
+        required: false
+        schema:
+          $ref: "#/definitions/EntityInContextRequest"
+        x-exportParamName: "Parameters"
+      responses:
+        "200":
+          description: "Success"
+  /api/types({entityTypes})/entities:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Returns a list of all entities that are of, or derive from, a given\
+        \ type or types."
+      operationId: "ApiTypes({entityTypes})EntitiesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "entityTypes"
+        in: "path"
+        description: "entityTypes is a comma-separated list of entity types, for example,\
+          \ Component, Charge."
+        required: true
+        type: "string"
+        x-exportParamName: "EntityTypes"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({entityTypes})/characteristics:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Returns all of the characteristics used by the Entity Types passed."
+      operationId: "ApiEntitytypes({entityTypes})CharacteristicsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "entityTypes"
+        in: "path"
+        description: "entityTypes is a comma-separated list of Entity types. If an\
+          \ entity type has inheriting types, the\r\n             elements of those\
+          \ types are not analysed by this query. Elements inherited from Parent types\
+          \ are\r\n             included. i.e. When querying for type 'Product', elements\
+          \ on 'Launch Entity' are included,\r\n             whereas elements on the\
+          \ type 'Package' are not included."
+        required: true
+        type: "string"
+        x-exportParamName: "EntityTypes"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({usedByTypeNames})/classificationtypes/classifications:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Reports on the \"Classification\" used by a specific type. The Type\
+        \ could be an entity or otherwise."
+      operationId: "ApiEntitytypes({usedByTypeNames})ClassificationtypesClassificationsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "usedByTypeNames"
+        in: "path"
+        description: "usedByTypeNames is a comma-separated list of the Fact type names,\
+          \ for example, Product,Package"
+        required: true
+        type: "string"
+        x-exportParamName: "UsedByTypeNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({usedByTypeNames})/classificationtypes/classification-values:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Returns list of all the classifications with values that are being\
+        \ used for the supplied Entity/Type"
+      description: "This query provides additional filtering in that only values that\
+        \ have actually been used against an entity will be included in the set of\
+        \ values returned. \r\nIf no entities of the type (or a type inheriting from\
+        \ the type provided) use a particular value then it will not be returned in\
+        \ the result set. \r\nTherefore every value returned will be a classification\
+        \ about an entity of the type supplied. This is useful as a method to only\
+        \ display options that have been used.\r\nAs the type parameter is made more\
+        \ specific (i.e. further down the inheritance tree) the number of classification\
+        \ elements will increase as more are include from inheritance. \r\nHowever\
+        \ the number of values will decrease as the number of entities involved decreases"
+      operationId: "ApiEntitytypes({usedByTypeNames})ClassificationtypesClassification-valuesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "usedByTypeNames"
+        in: "path"
+        description: "usedByTypeNames is a comma separated list of the Entity type\
+          \ names, for example, 'Product,Package'."
+        required: true
+        type: "string"
+        x-exportParamName: "UsedByTypeNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({usedByTypeNames})/facttypes/facts:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Returns all Facts, including where they are used in the data model\
+        \ and in which element context."
+      operationId: "ApiEntitytypes({usedByTypeNames})FacttypesFactsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "usedByTypeNames"
+        in: "path"
+        description: "usedByTypeNames is a comma-separated list of the Fact type names."
+        required: true
+        type: "string"
+        x-exportParamName: "UsedByTypeNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({usedByTypeNames})/facttypes/facts-values:
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Reports on the \"Facts\" used by a specific type. The Type could be\
+        \ an entity or otherwise."
+      operationId: "ApiEntitytypes({usedByTypeNames})FacttypesFacts-valuesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "usedByTypeNames"
+        in: "path"
+        description: "usedByTypeNames is a comma-separated list of the Fact type names,\
+          \ for example, Lookup_Speed,Lookup_Color"
+        required: true
+        type: "string"
+        x-exportParamName: "UsedByTypeNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/entitytypes({usedByTypeNames})/facttypes/facts-values/elements({elementNames}):
+    get:
+      tags:
+      - "EntityTypes"
+      summary: "Returns list of all the facts with values that are being used for\
+        \ the supplied Entity/Type."
+      description: "This query provides additional filtering in that only values that\
+        \ have actually been used against an entity will be included in the set of\
+        \ values returned. \r\nIf no entities of the type (or a type inheriting from\
+        \ the type provided) use a particular value then it will not be returned in\
+        \ the result set. \r\nTherefore every value returned will be a fact about\
+        \ an entity of the type supplied. This is useful as a method to only display\
+        \ options that have been used.\r\nAs the type parameter is made more specific\
+        \ (i.e. further down the inheritance tree) the number of fact elements will\
+        \ increase as more are include from inheritance. \r\nHowever the number of\
+        \ values will decrease as the number of entities involved decreases."
+      operationId: "ApiEntitytypes({usedByTypeNames})FacttypesFacts-valuesElements({elementNames})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "usedByTypeNames"
+        in: "path"
+        description: "usedByTypeNames is a comma separated list of the Entity type\
+          \ names, for example, 'Product,Package'"
+        required: true
+        type: "string"
+        x-exportParamName: "UsedByTypeNames"
+      - name: "elementNames"
+        in: "path"
+        description: "elementNames are the names of the types of elements in a comma-separated\
+          \ list."
+        required: true
+        type: "string"
+        x-exportParamName: "ElementNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/facts:
+    get:
+      tags:
+      - "FactTypes"
+      summary: "Returns All Facts"
+      operationId: "ApiFactsGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/factTypes({factTypeNames})/facts:
+    get:
+      tags:
+      - "FactTypes"
+      summary: "Returns all facts filtered by the fact type"
+      operationId: "ApiFactTypes({factTypeNames})FactsGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "factTypeNames"
+        in: "path"
+        description: ""
+        required: true
+        type: "string"
+        x-exportParamName: "FactTypeNames"
+      responses:
+        "200":
+          description: "Success"
+  /api/factTypes({factTypeNames})/facts/values:
+    get:
+      tags:
+      - "FactTypes"
+      summary: "Returns all Fact values for specified Fact types."
+      operationId: "ApiFactTypes({factTypeNames})FactsValuesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "factTypeNames"
+        in: "path"
+        description: "factTypeNames are the names of the Fact types in a comma-separated\
+          \ list."
+        required: true
+        type: "string"
+        x-exportParamName: "FactTypeNames"
+      - name: "entityTypes"
+        in: "query"
+        description: ""
+        required: false
+        type: "string"
+        x-exportParamName: "EntityTypes"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/getfullyhydratedproduct:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and return a structure representing a fully hydrated Product XML made up\
+        \ of the user selected options."
+      operationId: "ApiProductcandidateGetfullyhydratedproductPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a product candidate."
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/getfullyhydratedproductwithoutvalidating:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and return a structure representing a fully hydrated Product XML made up\
+        \ of the user selected options."
+      operationId: "ApiProductcandidateGetfullyhydratedproductwithoutvalidatingPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a product candidate."
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/getcommerciallyhydratedproduct:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and \r\nreturn a hydrated product containing only the commercial data and\
+        \ no technical data\r\nNote: Technical items are excluded unless explicitly\
+        \ included in the input candidate"
+      operationId: "ApiProductcandidateGetcommerciallyhydratedproductPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: ""
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/getcommerciallyhydratedproductwithoutvalidating:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and \r\nreturn a hydrated product containing only the commercial data and\
+        \ no technical data\r\nNote: Technical items are excluded unless explicitly\
+        \ included in the input candidate"
+      operationId: "ApiProductcandidateGetcommerciallyhydratedproductwithoutvalidatingPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: ""
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/gettechnicallyhydratedproduct:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and return a structure representing a fully hydrated commercial Product\
+        \ XML with technical ambiguities included"
+      operationId: "ApiProductcandidateGettechnicallyhydratedproductPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a product candidate."
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/gettechnicallyhydratedproductwithoutvalidating:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and return a structure representing a fully hydrated commercial Product\
+        \ XML with technical ambiguities included"
+      operationId: "ApiProductcandidateGettechnicallyhydratedproductwithoutvalidatingPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a product candidate."
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/getfullyhydratedproductBV:
+    post:
+      tags:
+      - "Hydrate"
+      summary: "Validates a supplied Product Candidate as per the Validation resource\
+        \ and return a structure representing a fully hydrated Product XML made up\
+        \ of the user selected options."
+      operationId: "ApiProductcandidateGetfullyhydratedproductBVPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a product candidate."
+        required: false
+        schema:
+          $ref: "#/definitions/ProductCandidateDecomposeRequest"
+        x-exportParamName: "ProductCandidate"
+      responses:
+        "200":
+          description: "Success"
+  /api/import:
+    post:
+      tags:
+      - "Import"
+      summary: "Requests a refresh of the Catalog Services Data from the local file\
+        \ system.\r\nThe path to the dataset is defined in the request body."
+      operationId: "ApiImportPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: false
+        schema:
+          $ref: "#/definitions/ImportTarget"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "Success"
+  /api/manage/refreshfromlocaldatastore:
+    get:
+      tags:
+      - "Import"
+      summary: "Requests a refresh of the Catalog Services Data from the local file\
+        \ system.\r\nThe path to the dataset is defined in the appsettings.json -\
+        \ Server:DataStoreRefresh:DatasetPath"
+      operationId: "ApiManageRefreshfromlocaldatastoreGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+    post:
+      tags:
+      - "Import"
+      summary: "Requests a refresh of the Catalog Services Data from the local file\
+        \ system.\r\nThe path to the dataset is defined in the request body."
+      operationId: "ApiManageRefreshfromlocaldatastorePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: false
+        schema:
+          $ref: "#/definitions/ImportTarget"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "Success"
+  /api/status/refreshfromlocaldatastore:
+    get:
+      tags:
+      - "Import"
+      summary: "Requests a refresh of the Catalog Services Data from the local file\
+        \ system.\r\nThe path to the dataset is defined in the appsettings.json -\
+        \ Server:DataStoreRefresh:DatasetPath"
+      operationId: "ApiStatusRefreshfromlocaldatastoreGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/Manage/technicalBoundary:
+    get:
+      tags:
+      - "Manage"
+      summary: "Retrieve details about the configured technical boundary"
+      operationId: "ApiManageTechnicalBoundaryGet"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/price/fixed:
+    post:
+      tags:
+      - "Pricing"
+      summary: "Returns a Fixed price summary for the given order candidate"
+      operationId: "ApiOrdercandidatePriceFixedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "orderCandidate"
+        description: "a Json/Xml object containing an OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/price/forOrderCandidate/fixed:
+    post:
+      tags:
+      - "Pricing"
+      summary: "Returns a Fixed price summary for the given order candidate"
+      operationId: "ApiPriceForOrderCandidateFixedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "orderCandidate"
+        description: "a Json/Xml object containing an OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/price/fixed:
+    post:
+      tags:
+      - "Pricing"
+      summary: "Returns a Fixed price summary for the given Product candidate"
+      operationId: "ApiProductcandidatePriceFixedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/price/forProductCandidate/fixed:
+    post:
+      tags:
+      - "Pricing"
+      summary: "Returns a Fixed price summary for the given Product candidate"
+      operationId: "ApiPriceForProductCandidateFixedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/pricing/GetPriceForProductCandidate:
+    post:
+      tags:
+      - "Pricing"
+      summary: "Returns a Fixed price summary for the given Product candidate"
+      operationId: "ApiPricingGetPriceForProductCandidatePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productCandidate/InferProductCandidate:
+    post:
+      tags:
+      - "ProductCandidate"
+      summary: "Attempts to augment the specified Product Candidate Structure with\
+        \ inferred data as per the specification."
+      operationId: "ApiProductCandidateInferProductCandidatePost"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/productCandidate/GetPriceForPartialProductCandidate:
+    post:
+      tags:
+      - "ProductCandidate"
+      summary: "Infers the missing data and resolves the pricing for the specified\
+        \ Product Candidate."
+      operationId: "ApiProductCandidateGetPriceForPartialProductCandidatePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "A xml/json object that contains a Product Candidate."
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/rates({chargePath}):
+    get:
+      tags:
+      - "Rates"
+      summary: "Return the details of the charge for the supplied charge path."
+      description: "Responses vary depending on whether the supplied charge is an\
+        \ Event Charge or a Non-Event Charge."
+      operationId: "ApiRates({chargePath})Get"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "chargePath"
+        in: "path"
+        description: "chargePath is a comma-separated list of GUIDs corresponding\
+          \ to the path to a charge."
+        required: true
+        type: "string"
+        x-exportParamName: "ChargePath"
+      responses:
+        "200":
+          description: "Success"
+  /api/RelatedEntities:
+    get:
+      tags:
+      - "RelatedEntities"
+      summary: "Returns a set of entities that are related to a given entity."
+      description: "Used for interrogating instances using the T_RelatedEntityRule\
+        \ pattern and the TRelated_Contextual_Entity_Rule.\r\n<para></para>\r\nThere\
+        \ are two flavours of this operation. It can retrieve the information about\
+        \ the relations based upon two different conditions:\r\n<para></para>\r\n•\
+        \ Related entities based upon the Type(s) of the relation. This will return\
+        \ all elements which match the types passed.\r\n<para></para>\r\n• Related\
+        \ entities based upon element names. This will return the data from these\
+        \ specific elements only."
+      operationId: "ApiRelatedEntitiesGet"
+      consumes: []
+      produces: []
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "entityId is the GUID of the entity being queried."
+        required: false
+        type: "string"
+        x-exportParamName: "Id"
+        x-optionalDataType: "String"
+      - name: "relationTypes"
+        in: "query"
+        description: "relationTypes is a comma separated list of types of relation\
+          \ or element names."
+        required: false
+        type: "string"
+        x-exportParamName: "RelationTypes"
+        x-optionalDataType: "String"
+      - name: "requestType"
+        in: "query"
+        description: "requestType indicates whether the relation types contains “\
+          types” or “elements” according to the value passed here."
+        required: false
+        type: "string"
+        x-exportParamName: "RequestType"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/status/refreshdatastore:
+    get:
+      tags:
+      - "Status"
+      summary: "Requests a refresh of the Catalog Services Data."
+      operationId: "ApiStatusRefreshdatastoreGet"
+      consumes: []
+      produces:
+      - "text/plain"
+      - "application/json"
+      - "text/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: "string"
+  /api/orderCandidate/supplementalOrder:
+    post:
+      tags:
+      - "SupplementalOrder"
+      summary: "Returns Supplemental order for the given order candidate"
+      operationId: "ApiOrderCandidateSupplementalOrderPost"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/validate:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate an OrderCandidate after carrying out inference"
+      operationId: "ApiOrdercandidateValidatePost"
+      consumes: []
+      produces: []
+      parameters: []
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/validate/commercial:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate an OrderCandidate after carrying out inference\r\n\
+        with respect to the commercial/technical boundary"
+      operationId: "ApiOrdercandidateValidateCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "orderCandidate"
+        description: "a Json/Xml object containing an OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/validate:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate a ProductCandidate after carrying out inference"
+      operationId: "ApiProductcandidateValidatePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/validation/ForItem:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate a ProductCandidate after carrying out inference"
+      operationId: "ApiValidationForItemPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/validate/commercial:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate a ProductCandidate after carrying out inference\r\n\
+        with respect to the commercial/technical boundary"
+      operationId: "ApiProductcandidateValidateCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/commercialvalidation/ForItem:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate a ProductCandidate after carrying out inference\r\n\
+        with respect to the commercial/technical boundary"
+      operationId: "ApiCommercialvalidationForItemPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: "a Json/Xml object containing a ProductCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/portfolio/validate:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate the end state portfolio to determine if it is eligible\
+        \ for purchase by the customer"
+      operationId: "ApiPortfolioValidatePost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "portfolio"
+        description: "a Json/Xml object containing a CustomerPortfolio"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "Portfolio"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/commercialValidation/ForCustomerPortfolio:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate the end state portfolio to determine if it is eligible\
+        \ for purchase by the customer"
+      operationId: "ApiCommercialValidationForCustomerPortfolioPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "portfolio"
+        description: "a Json/Xml object containing a CustomerPortfolio"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "Portfolio"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/validate/locked:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate an OrderCandidate however does not carry out inference"
+      operationId: "ApiOrdercandidateValidateLockedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "orderCandidate"
+        description: "a Json/Xml object containing an OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/ordercandidate/validate/locked/commercial:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate an OrderCandidate with respect to the Commercial/Technical\
+        \ boundary\r\nhowever does not carry out inference"
+      operationId: "ApiOrdercandidateValidateLockedCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "orderCandidate"
+        description: "a Json/Xml object containing an OrderCandidate"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "OrderCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/validate/Locked:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate a ProductCandidate without performing inference"
+      operationId: "ApiProductcandidateValidateLockedPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: ""
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+  /api/productcandidate/validate/Locked/commercial:
+    post:
+      tags:
+      - "Validate"
+      summary: "Fully validate an ProductCandidate without performing inference and\
+        \ with respect to the Commercial/Technical boundary"
+      operationId: "ApiProductcandidateValidateLockedCommercialPost"
+      consumes:
+      - "application/json-patch+json"
+      - "application/json"
+      - "text/json"
+      - "application/*+json"
+      - "application/xml"
+      - "text/xml"
+      - "application/*+xml"
+      produces: []
+      parameters:
+      - in: "body"
+        name: "productCandidate"
+        description: ""
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "ProductCandidate"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Success"
+securityDefinitions: {}
+definitions:
+  GraphDataSearch:
+    type: "object"
+    properties:
+      parent:
+        type: "string"
+      key:
+        type: "string"
+      value:
+        type: "string"
+      sortByKey:
+        type: "boolean"
+      includeDescendents:
+        type: "boolean"
+      encodeValues:
+        type: "boolean"
+      topLevelOnly:
+        type: "boolean"
+  EntityDetailsBuilderRequest:
+    type: "object"
+    properties:
+      rootGuid:
+        type: "string"
+      targetGuid:
+        type: "string"
+  FindWithParametersFilters:
+    type: "object"
+    properties:
+      classifications:
+        type: "string"
+      characteristics:
+        type: "string"
+      factElementFilter:
+        type: "string"
+      instanceTypeName:
+        type: "string"
+      categories:
+        type: "string"
+      availableDate:
+        type: "string"
+  EntityInContextRequest:
+    type: "object"
+    properties:
+      entityGuidPath:
+        type: "string"
+      entityBusinessIDPath:
+        type: "string"
+      activationDate:
+        type: "string"
+    example:
+      entityBusinessIDPath: "entityBusinessIDPath"
+      entityGuidPath: "entityGuidPath"
+      activationDate: "activationDate"
+  FindFilteredParameters:
+    type: "object"
+    properties:
+      targetDate:
+        type: "string"
+      targetTypes:
+        type: "array"
+        items:
+          type: "string"
+      classifications:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "string"
+      select:
+        type: "array"
+        items:
+          type: "string"
+  IdAndQueryDateRequest:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      queryDate:
+        type: "string"
+  ProductCandidateDecomposeRequest:
+    type: "object"
+    properties:
+      creationDate:
+        type: "string"
+        format: "date-time"
+      productCandidate:
+        $ref: "#/definitions/ProductCandidate"
+      contextualParameter:
+        type: "array"
+        items:
+          $ref: "#/definitions/RootContextualParameter"
+    example:
+      productCandidate:
+        rateAttribute:
+        - name: "name"
+          value: "value"
+        - name: "name"
+          value: "value"
+        configuredValue:
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        isNewForCustomer: true
+        childEntity:
+        - rateAttribute:
+          - name: "name"
+            value: "value"
+          - name: "name"
+            value: "value"
+          configuredValue:
+          - useID: "useID"
+            value:
+            - valueDetail: "valueDetail"
+              value: "value"
+            - valueDetail: "valueDetail"
+              value: "value"
+          - useID: "useID"
+            value:
+            - valueDetail: "valueDetail"
+              value: "value"
+            - valueDetail: "valueDetail"
+              value: "value"
+          includeTechnicalChildren: true
+          isNewForCustomer: true
+          childEntity:
+          - null
+          - null
+          unitQuantity: "unitQuantity"
+          entityID: "entityID"
+          characteristicUse:
+          - useArea: "useArea"
+            characteristicID: "characteristicID"
+            value:
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+          - useArea: "useArea"
+            characteristicID: "characteristicID"
+            value:
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+          isNewForCustomerSpecified: true
+          id: "id"
+          linkedEntity:
+          - linkTypeID: "linkTypeID"
+            link:
+            - portfolioItemID: "portfolioItemID"
+            - portfolioItemID: "portfolioItemID"
+          - linkTypeID: "linkTypeID"
+            link:
+            - portfolioItemID: "portfolioItemID"
+            - portfolioItemID: "portfolioItemID"
+        - rateAttribute:
+          - name: "name"
+            value: "value"
+          - name: "name"
+            value: "value"
+          configuredValue:
+          - useID: "useID"
+            value:
+            - valueDetail: "valueDetail"
+              value: "value"
+            - valueDetail: "valueDetail"
+              value: "value"
+          - useID: "useID"
+            value:
+            - valueDetail: "valueDetail"
+              value: "value"
+            - valueDetail: "valueDetail"
+              value: "value"
+          includeTechnicalChildren: true
+          isNewForCustomer: true
+          childEntity:
+          - null
+          - null
+          unitQuantity: "unitQuantity"
+          entityID: "entityID"
+          characteristicUse:
+          - useArea: "useArea"
+            characteristicID: "characteristicID"
+            value:
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+          - useArea: "useArea"
+            characteristicID: "characteristicID"
+            value:
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+            - valueID: "valueID"
+              valueDetail: "valueDetail"
+          isNewForCustomerSpecified: true
+          id: "id"
+          linkedEntity:
+          - linkTypeID: "linkTypeID"
+            link:
+            - portfolioItemID: "portfolioItemID"
+            - portfolioItemID: "portfolioItemID"
+          - linkTypeID: "linkTypeID"
+            link:
+            - portfolioItemID: "portfolioItemID"
+            - portfolioItemID: "portfolioItemID"
+        unitQuantity: "unitQuantity"
+        entityID: "entityID"
+        characteristicUse:
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        id: "id"
+        linkedEntity:
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+      creationDate: "2000-01-23T04:56:07.000+00:00"
+      contextualParameter:
+      - value: "{}"
+      - value: "{}"
+  ProductCandidate:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      entityID:
+        type: "string"
+      childEntity:
+        type: "array"
+        items:
+          $ref: "#/definitions/Entity"
+      characteristicUse:
+        type: "array"
+        items:
+          $ref: "#/definitions/CharacteristicUse"
+      rateAttribute:
+        type: "array"
+        items:
+          $ref: "#/definitions/RatingAttribute"
+      configuredValue:
+        type: "array"
+        items:
+          $ref: "#/definitions/ConfiguredValueUse"
+      linkedEntity:
+        type: "array"
+        items:
+          $ref: "#/definitions/EntityLink"
+      unitQuantity:
+        type: "string"
+      isNewForCustomer:
+        type: "boolean"
+    example:
+      rateAttribute:
+      - name: "name"
+        value: "value"
+      - name: "name"
+        value: "value"
+      configuredValue:
+      - useID: "useID"
+        value:
+        - valueDetail: "valueDetail"
+          value: "value"
+        - valueDetail: "valueDetail"
+          value: "value"
+      - useID: "useID"
+        value:
+        - valueDetail: "valueDetail"
+          value: "value"
+        - valueDetail: "valueDetail"
+          value: "value"
+      isNewForCustomer: true
+      childEntity:
+      - rateAttribute:
+        - name: "name"
+          value: "value"
+        - name: "name"
+          value: "value"
+        configuredValue:
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        includeTechnicalChildren: true
+        isNewForCustomer: true
+        childEntity:
+        - null
+        - null
+        unitQuantity: "unitQuantity"
+        entityID: "entityID"
+        characteristicUse:
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        isNewForCustomerSpecified: true
+        id: "id"
+        linkedEntity:
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+      - rateAttribute:
+        - name: "name"
+          value: "value"
+        - name: "name"
+          value: "value"
+        configuredValue:
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        - useID: "useID"
+          value:
+          - valueDetail: "valueDetail"
+            value: "value"
+          - valueDetail: "valueDetail"
+            value: "value"
+        includeTechnicalChildren: true
+        isNewForCustomer: true
+        childEntity:
+        - null
+        - null
+        unitQuantity: "unitQuantity"
+        entityID: "entityID"
+        characteristicUse:
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        - useArea: "useArea"
+          characteristicID: "characteristicID"
+          value:
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+          - valueID: "valueID"
+            valueDetail: "valueDetail"
+        isNewForCustomerSpecified: true
+        id: "id"
+        linkedEntity:
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+        - linkTypeID: "linkTypeID"
+          link:
+          - portfolioItemID: "portfolioItemID"
+          - portfolioItemID: "portfolioItemID"
+      unitQuantity: "unitQuantity"
+      entityID: "entityID"
+      characteristicUse:
+      - useArea: "useArea"
+        characteristicID: "characteristicID"
+        value:
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+      - useArea: "useArea"
+        characteristicID: "characteristicID"
+        value:
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+      id: "id"
+      linkedEntity:
+      - linkTypeID: "linkTypeID"
+        link:
+        - portfolioItemID: "portfolioItemID"
+        - portfolioItemID: "portfolioItemID"
+      - linkTypeID: "linkTypeID"
+        link:
+        - portfolioItemID: "portfolioItemID"
+        - portfolioItemID: "portfolioItemID"
+  RootContextualParameter:
+    type: "object"
+    properties:
+      value:
+        type: "object"
+        properties: {}
+    example:
+      value: "{}"
+  Entity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      entityID:
+        type: "string"
+      childEntity:
+        type: "array"
+        items:
+          $ref: "#/definitions/Entity"
+      characteristicUse:
+        type: "array"
+        items:
+          $ref: "#/definitions/CharacteristicUse"
+      rateAttribute:
+        type: "array"
+        items:
+          $ref: "#/definitions/RatingAttribute"
+      configuredValue:
+        type: "array"
+        items:
+          $ref: "#/definitions/ConfiguredValueUse"
+      linkedEntity:
+        type: "array"
+        items:
+          $ref: "#/definitions/EntityLink"
+      unitQuantity:
+        type: "string"
+      includeTechnicalChildren:
+        type: "boolean"
+      isNewForCustomer:
+        type: "boolean"
+      isNewForCustomerSpecified:
+        type: "boolean"
+    example:
+      rateAttribute:
+      - name: "name"
+        value: "value"
+      - name: "name"
+        value: "value"
+      configuredValue:
+      - useID: "useID"
+        value:
+        - valueDetail: "valueDetail"
+          value: "value"
+        - valueDetail: "valueDetail"
+          value: "value"
+      - useID: "useID"
+        value:
+        - valueDetail: "valueDetail"
+          value: "value"
+        - valueDetail: "valueDetail"
+          value: "value"
+      includeTechnicalChildren: true
+      isNewForCustomer: true
+      childEntity:
+      - null
+      - null
+      unitQuantity: "unitQuantity"
+      entityID: "entityID"
+      characteristicUse:
+      - useArea: "useArea"
+        characteristicID: "characteristicID"
+        value:
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+      - useArea: "useArea"
+        characteristicID: "characteristicID"
+        value:
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+        - valueID: "valueID"
+          valueDetail: "valueDetail"
+      isNewForCustomerSpecified: true
+      id: "id"
+      linkedEntity:
+      - linkTypeID: "linkTypeID"
+        link:
+        - portfolioItemID: "portfolioItemID"
+        - portfolioItemID: "portfolioItemID"
+      - linkTypeID: "linkTypeID"
+        link:
+        - portfolioItemID: "portfolioItemID"
+        - portfolioItemID: "portfolioItemID"
+  CharacteristicUse:
+    type: "object"
+    properties:
+      useArea:
+        type: "string"
+      characteristicID:
+        type: "string"
+      value:
+        type: "array"
+        items:
+          $ref: "#/definitions/CharacteristicValue"
+    example:
+      useArea: "useArea"
+      characteristicID: "characteristicID"
+      value:
+      - valueID: "valueID"
+        valueDetail: "valueDetail"
+      - valueID: "valueID"
+        valueDetail: "valueDetail"
+  RatingAttribute:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+    example:
+      name: "name"
+      value: "value"
+  ConfiguredValueUse:
+    type: "object"
+    properties:
+      useID:
+        type: "string"
+      value:
+        type: "array"
+        items:
+          $ref: "#/definitions/ConfiguredValue"
+    example:
+      useID: "useID"
+      value:
+      - valueDetail: "valueDetail"
+        value: "value"
+      - valueDetail: "valueDetail"
+        value: "value"
+  EntityLink:
+    type: "object"
+    properties:
+      linkTypeID:
+        type: "string"
+      link:
+        type: "array"
+        items:
+          $ref: "#/definitions/LinkTarget"
+    example:
+      linkTypeID: "linkTypeID"
+      link:
+      - portfolioItemID: "portfolioItemID"
+      - portfolioItemID: "portfolioItemID"
+  CharacteristicValue:
+    type: "object"
+    properties:
+      valueID:
+        type: "string"
+      valueDetail:
+        type: "string"
+    example:
+      valueID: "valueID"
+      valueDetail: "valueDetail"
+  ConfiguredValue:
+    type: "object"
+    properties:
+      value:
+        type: "string"
+      valueDetail:
+        type: "string"
+    example:
+      valueDetail: "valueDetail"
+      value: "value"
+  LinkTarget:
+    type: "object"
+    properties:
+      portfolioItemID:
+        type: "string"
+    example:
+      portfolioItemID: "portfolioItemID"
+  ImportTarget:
+    type: "object"
+    properties:
+      target:
+        type: "string"
+    example:
+      target: "target"
