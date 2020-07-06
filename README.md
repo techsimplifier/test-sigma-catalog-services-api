@@ -56,7 +56,7 @@ cd test-sigma-catalog-services-api
 docker build -t test-sigma-catalog-services-api:0.0.0 .
 ```
 
-## Run it
+### Run it
 ```bash
 docker run test-sigma-catalog-services-api:0.0.0 catalog categories --endpoint https://localhost/CS3/
 ```
